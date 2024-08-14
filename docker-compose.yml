@@ -1,0 +1,35 @@
+version: '3'
+services:
+  backend:
+    build: './backend'
+    ports:
+      - "3000:3000"
+    volumes:
+      - './backend:/app'
+      - '/app/node_modules'
+    env_file:
+      - './backend/.env'
+    command: npm run dev
+    depends_on:
+      - database
+
+  frontend:
+    build: './frontend'
+    ports:
+      - '5173:5173'
+    volumes:
+      - './frontend:/app'
+      - '/app/node_modules'
+    command: npm run dev -- --host
+    depends_on:
+      - backend
+
+  database:
+    image: mongo
+    ports:
+      - '2727:2727'
+    volumes:
+      - mongo-data:/data/db 
+
+volumes:
+  mongo-data:
