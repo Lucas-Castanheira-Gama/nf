@@ -7,7 +7,7 @@ import auth from './middleware/auth.js'
 
 const app = express();
 app.use(express.json())
-app.use(cors())
+app.use(cors('https://nf-1psznt5o2-lucas-projects-1129442c.vercel.app/'))
 
 app.use('/', olaRoute)
 app.use('/', auth, privateRoute)
