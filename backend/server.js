@@ -6,8 +6,16 @@ import cors from 'cors'
 import auth from './middleware/auth.js'
 
 const app = express();
+
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', 'https://lucasnfagr.netlify.app');
+    res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+    res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+    next();
+});
+
 app.use(cors({
-    origin: '*', // Permite todas as origens (não recomendado em produção)
+    origin: 'https://lucasnfagr.netlify.app/', // Permite todas as origens (não recomendado em produção)
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     credentials: true
 }));
