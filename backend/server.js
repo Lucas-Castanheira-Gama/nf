@@ -7,7 +7,7 @@ import auth from './middleware/auth.js'
 
 const app = express();
 app.use(cors({
-    origin: 'https://lucasnfagr.netlify.app/', // URL do seu frontend hospedado no Netlify
+    origin: 'https://lucasnfagr.netlify.app', // URL do seu frontend hospedado no Netlify
     methods: ['GET', 'POST', 'PUT', 'DELETE'], // Adicione os métodos permitidos
     credentials: true // Se estiver usando cookies ou autenticação via token
 }));
