@@ -14,13 +14,6 @@ app.use((req, res, next) => {
     next();
 });
 
-app.use(cors({
-    origin: 'https://lucasnfagr.netlify.app/', // Permite todas as origens (não recomendado em produção)
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],
-    credentials: true
-}));
-
-
 
 app.use(express.json())
 app.use('/', olaRoute)
