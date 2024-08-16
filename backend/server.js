@@ -12,6 +12,7 @@ app.use(cors())
 app.use('/', olaRoute)
 app.use('/', auth, privateRoute)
 
-app.listen(3000, () => {
-    console.log("Servidorr rodando na porta 3000")
-})
+const port = process.env.PORT || 3000;
+app.listen(port, () => {
+    console.log(`Server running on port ${port}`);
+});
