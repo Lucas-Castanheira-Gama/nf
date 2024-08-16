@@ -11,7 +11,7 @@ const JWT_SECRET = process.env.JWT_SECRET
 const prisma = new PrismaClient()
 
 route.get('/', (req,res)=>{
-    res.send("aqui quem fala e o servidor atualizado")
+    res.send("TESTANDOO")
 })
 
 

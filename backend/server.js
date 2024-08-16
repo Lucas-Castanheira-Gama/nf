@@ -9,14 +9,11 @@ const app = express();
 // Middleware de CORS
 app.use(cors({
     origin: 'https://lucasnfagr.netlify.app',
-    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
     allowedHeaders: ['Content-Type', 'Authorization'],
 }));
 
-// Lidar com requisições preflight
-app.options('*', cors());
-
-// Outros middlewares
+// Middleware para JSON
 app.use(express.json());
 
 // Suas rotas
