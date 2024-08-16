@@ -13,5 +13,5 @@ app.use('/', olaRoute)
 app.use('/', auth, privateRoute)
 
 app.listen(3000, () => {
-    console.log("Servidor rodando na porta 3000")
+    console.log("Servidorr rodando na porta 3000")
 })
