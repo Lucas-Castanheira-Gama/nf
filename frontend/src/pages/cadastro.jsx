@@ -30,18 +30,23 @@ function cadastro(){
                 <h1 className="text-3xl font-bold text-white mb-6 text-center">Cadastro</h1>
                 <form onSubmit={handleSubmit} className="flex flex-col space-y-4">
                     <input
+                        required minLength={6}
+
                         ref={nomeRef}
                         type="text"
                         placeholder="Nome"
                         className="p-3 border border-gray-600 rounded-lg bg-gray-900 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
                     />
                     <input
+                        required minLength={6}
+
                         ref={emailRef}
                         type="email"
                         placeholder="Email"
                         className="p-3 border border-gray-600 rounded-lg bg-gray-900 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
                     />
                     <input
+                        required minLength={6}
                         ref={passwordRef}
                         type="password"
                         placeholder="Senha"

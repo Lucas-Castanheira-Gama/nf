@@ -141,7 +141,7 @@ function Listar() {
                 <div className="flex items-center justify-center min-h-screen">
                     <div className="bg-gray-800 p-8 rounded-lg shadow-lg w-full max-w-md">
                         <h1 className="text-3xl font-bold text-white mb-6 text-center">Formulário de Lançamento</h1>
-                        <input ref={pdfRef} type="file" className="mb-4 bg-gray-900 text-white rounded-lg p-3 w-full" />
+                        <input required ref={pdfRef} type="file" className="mb-4 bg-gray-900 text-white rounded-lg p-3 w-full" />
                         {/* <input ref={numeroNfRef} type="text" placeholder="Número da NF: " className="mb-4 bg-gray-900 text-white rounded-lg p-3 w-full" /> */}
                         <Listbox value={selected} onChange={setSelected}>
                             <Listbox.Label className="block text-sm font-medium leading-6 text-white">Status</Listbox.Label>

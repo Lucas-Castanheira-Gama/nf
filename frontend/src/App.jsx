@@ -5,6 +5,7 @@ import Listar from './pages/listar';
 import Visualizar_notas from './pages/vizualizar';
 import Contato from './pages/contato';
 import Config from './pages/config';
+import Home from './pages/home'
 
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
     // <div className="flex flex-col min-h-screen">
       <Router>
           <Routes>
+            <Route path="/" element={<Home />} />
             <Route path="/cadastro" element={<Cadastro />} />
             <Route path="/login" element={<Login />} />
             <Route path="/listar" element={<Listar />} />
