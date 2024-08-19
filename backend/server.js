@@ -6,21 +6,27 @@ import auth from './middleware/auth.js';
 
 const app = express();
 
-// Configurar o CORS usando a biblioteca cors
+const allowedOrigins = [
+    'http://localhost:5173',  // Domínio de desenvolvimento
+    'https://lucasnfagr.netlify.app' // Domínio de produção
+];
+
 app.use(cors({
-    origin: 'http://localhost:5173/', // Frontend origin
+    origin: function (origin, callback) {
+        if (!origin || allowedOrigins.indexOf(origin) !== -1) {
+            callback(null, true);
+        } else {
+            callback(new Error('Not allowed by CORS'));
+        }
+    },
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization'],
 }));
 
-// app.use(cors('http://localhost:5173/'))
-
-// Lidar com requisições preflight separadamente
-app.options('*', cors());
+app.options('*', cors()); // Para lidar com requisições preflight
 
 app.use(express.json());
 
-// Suas rotas
 app.use('/', olaRoute);
 app.use('/', auth, privateRoute);
 
