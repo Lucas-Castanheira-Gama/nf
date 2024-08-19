@@ -34,7 +34,7 @@ route.post('/listar', upload.single('pdf'), async (req, res) => {
     // Converta o buffer para uma string base64 para enviar ao Python
     const pdfBase64 = pdfBuffer.buffer.toString('base64');
 
-    const pythonProcess = spawn('python', [path.join(__dirname, 'extrair_dados_nf.py')]);
+    const pythonProcess = spawn('python3', [path.join(__dirname, 'extrair_dados_nf.py')]);
     
     let pythonData = '';
     
