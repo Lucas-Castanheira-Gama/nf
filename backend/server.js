@@ -7,13 +7,13 @@ import auth from './middleware/auth.js';
 const app = express();
 
 // Configurar o CORS usando a biblioteca cors
-// app.use(cors({
-//     origin: 'https://lucasnfagr.netlify.app', // Frontend origin
-//     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-//     allowedHeaders: ['Content-Type', 'Authorization'],
-// }));
+app.use(cors({
+    origin: 'http://localhost:5173/', // Frontend origin
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+}));
 
-app.use(cors('http://localhost:5173/'))
+// app.use(cors('http://localhost:5173/'))
 
 // Lidar com requisições preflight separadamente
 app.options('*', cors());
