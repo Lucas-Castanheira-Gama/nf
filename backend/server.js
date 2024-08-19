@@ -8,10 +8,11 @@ const app = express();
 
 
 app.use(cors({
-    origin: 'https://lucasnfagr.netlify.app',
-    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-    allowedHeaders: ['Content-Type', 'Authorization'],
+    origin: '*',
+    methods: '*',
+    allowedHeaders: '*',
 }));
+
 
 app.options('*', cors()); // Para lidar com requisições preflight
 
