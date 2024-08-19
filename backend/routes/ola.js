@@ -34,35 +34,40 @@ route.post('/cadastro', async (req, res) => {
     }
 });
 
-route.post('/login', async (req,res) =>{
-    const { email, password } = req.body
-
+route.post('/login', async (req, res) => {
+    const { email, password } = req.body;
+  
     try {
-        const user = await prisma.user.findUnique({ where: { email: email } });
-        
-        if (!user) {
-            return res.status(400).json({ message: 'Email incorreto' });
-        }
-
-        const isPasswordValid = await bcrypt.compare(password, user.password);
-        
-        if (!isPasswordValid) {
-            return res.status(400).json({ message: 'Senha incorreta' });
-        }
-
-        const token = jwt.sign({ id:user.id, email:user.email }, JWT_SECRET, { expiresIn: "1d" } )
-        const userID = user.id
-
-        res.status(200).json({token, userID});
-        // console.log(token)
-        
+      // Verifique a conexão
+      await prisma.$connect();
+      console.log('Conectado ao banco de dados');
+  
+      const user = await prisma.user.findUnique({ where: { email } });
+  
+      if (!user) {
+        return res.status(400).json({ message: 'Email incorreto' });
+      }
+  
+      const isPasswordValid = await bcrypt.compare(password, user.password);
+  
+      if (!isPasswordValid) {
+        return res.status(400).json({ message: 'Senha incorreta' });
+      }
+  
+      const token = jwt.sign({ id: user.id, email: user.email }, JWT_SECRET, { expiresIn: "1d" });
+      const userID = user.id;
+  
+      res.status(200).json({ token, userID });
+      console.log('Login realizado com sucesso');
+  
     } catch (err) {
-        res.status(500).json({ error: 'Erro contate o suporte' });
+      console.error('Erro ao conectar-se ao banco de dados:', err);
+      res.status(500).json({ error: 'Erro contate o suporte' });
+    } finally {
+      await prisma.$disconnect();
     }
-
-
-
-})
+  });
+  
 
 
 
