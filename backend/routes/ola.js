@@ -40,9 +40,10 @@ route.post('/login', async (req, res) => {
     try {
       // Verifique a conexão
       await prisma.$connect();
+      
       console.log('Conectado ao banco de dados');
-  
       const user = await prisma.user.findUnique({ where: { email } });
+      console.log('Usuario encontrado');
   
       if (!user) {
         return res.status(400).json({ message: 'Email incorreto' });
