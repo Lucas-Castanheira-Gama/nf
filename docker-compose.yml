@@ -6,7 +6,7 @@ services:
       - "3000:3000"
     volumes:
       - './backend:/app'
-      - '/app/node_modules'
+      - './backend/prisma:/app/prisma'
     env_file:
       - './backend/.env'
     command: npm run dev
@@ -19,7 +19,6 @@ services:
       - '5173:5173'
     volumes:
       - './frontend:/app'
-      - '/app/node_modules'
     command: npm run dev -- --host
     depends_on:
       - backend
@@ -27,9 +26,9 @@ services:
   database:
     image: mongo
     ports:
-      - '2727:2727'
+      - '27017:27017'
     volumes:
-      - mongo-data:/data/db 
+      - mongo-data:/data/db
 
 volumes:
   mongo-data:

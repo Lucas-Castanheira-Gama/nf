@@ -2,7 +2,7 @@ import express from 'express';
 import { PrismaClient } from '@prisma/client';
 import { Router } from 'express';
 import multer from 'multer';
-import { spawn } from 'child_process';
+import { spawn, exec } from 'child_process';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
@@ -34,7 +34,7 @@ route.post('/listar', upload.single('pdf'), async (req, res) => {
     // Converta o buffer para uma string base64 para enviar ao Python
     const pdfBase64 = pdfBuffer.buffer.toString('base64');
 
-    const pythonProcess = spawn('python3', [path.join(__dirname, 'extrair_dados_nf.py')]);
+    const pythonProcess = spawn('python3', ['/app/routes/extrair_dados_nf.py']);
     
     let pythonData = '';
     
