@@ -1,20 +1,20 @@
-# Usar a imagem Node.js oficial como base
+# Escolha a imagem base
 FROM node:18-bullseye
 
-# Definir o diretório de trabalho dentro do contêiner
+# Crie o diretório de trabalho
 WORKDIR /app
 
-# Copiar os arquivos package.json e package-lock.json
+# Copie os arquivos de configuração
 COPY package*.json ./
 
-# Instalar as dependências do projeto
+# Instale as dependências
 RUN npm install
 
-# Copiar o restante dos arquivos do projeto
+# Copie o restante dos arquivos do projeto
 COPY . .
 
-# Expor a porta na qual o Vite servirá a aplicação
+# Exponha a porta que o Vite usa
 EXPOSE 5173
 
-# Comando para iniciar o servidor de desenvolvimento
+# Comando para iniciar o Vite
 CMD ["npm", "run", "dev"]
