@@ -4,8 +4,15 @@ FROM node:18-bullseye
 # Crie o diretório de trabalho
 WORKDIR /app
 
+RUN npm cache clean --force
+
+
 # Copie os arquivos de configuração
 COPY package*.json ./
+
+# Dockerfile
+RUN rm -rf node_modules package-lock.json
+
 
 # Instale as dependências
 RUN npm install

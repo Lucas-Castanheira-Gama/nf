@@ -18,7 +18,10 @@ services:
     ports:
       - '5173:5173'
     volumes:
-      - './frontend:/app'
+      - type: bind
+        source: ./frontend
+        target: /srv/app
+    tty: true
     command: npm run dev --host
     depends_on:
       - backend
