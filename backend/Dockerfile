@@ -1,4 +1,4 @@
-FROM node:18-bullseye-slim
+FROM node:18-bullseye
 
 # Instale Python
 RUN apt-get update && apt-get install -y python3 python3-pip

@@ -1,5 +1,5 @@
 # Usar a imagem Node.js oficial como base
-FROM node:18-alpine
+FROM node:18-bullseye
 
 # Definir o diretório de trabalho dentro do contêiner
 WORKDIR /app
@@ -17,4 +17,4 @@ COPY . .
 EXPOSE 5173
 
 # Comando para iniciar o servidor de desenvolvimento
-CMD ["npm", "run", "dev", "--", "--host"]
+CMD ["npm", "run", "dev"]
