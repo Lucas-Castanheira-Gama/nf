@@ -18,10 +18,9 @@ services:
     ports:
       - '5173:5173'
     volumes:
-      - ./frontend:/app
-      - .:/usr/src/app
-      - /usr/src/app/node_modules
-    command: npm run dev 
+    - ./frontend:/app
+    - ./frontend/node_modules:/app/node_modules
+    command: npm run dev --host
     depends_on:
       - backend
 
